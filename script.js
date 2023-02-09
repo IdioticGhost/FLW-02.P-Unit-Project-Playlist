@@ -84,6 +84,7 @@ let songStorage = [song1, song2, song3, song4, song5, song6];
 
 //REFACTOR LOOPS DAY 
 // task 15: update your `addSongInfo` function so the input values are saved in as values in a new object.
+
 // task 16: update your `.push()` so the input object is added to your array of objects.
 // task 17: update your loops based on your new array of objects.
 
@@ -97,8 +98,11 @@ function addSongInfo() {
     songName: songName.value,
     artist: artist.value,
     link: songLink.value
-}
-  
+  }
+
+  songStorage.push(newSong)
+
+
   // task 9: declare a variable to save the user input of the image url. Declare three more variables that save user input: One for the song names, one for the artists, and a last one for the song links.
 
   let imageInput = image.value
@@ -107,11 +111,11 @@ function addSongInfo() {
   let linkInput = songLink.value
 
   // task 10: use `.push()` to add each input value to the correct array.
-imageArray.push(imageInput)
-songNameArray.push(songInput)
-artistArray.push(artistInput)
-songLinkArray.push(linkInput)
-  
+  // imageArray.push(imageInput)
+  // songNameArray.push(songInput)
+  // artistArray.push(artistInput)
+  // songLinkArray.push(linkInput)
+
 }
 
 
@@ -132,17 +136,31 @@ function displaySongInfo() {
 
   // task 8: loop through your images array and display the images to your songs in the correct div. Create three more loops. One for the song names, one for the artists, and a last one for the song links.
 
-  for (i = 0; i < image.length; i++) {
-    displayImage.insertAdjacentHTML('beforeend', `<p>${imageArray[i]}</p>`)
-  }
-  for (i = 0; i < songName.length; i++) {
-    displaySong.insertAdjacentHTML('beforeend', `<p>${songNameArray[i]}</p>`)
-  }
-  for (i = 0; i < artist.length; i++) {
-    displayArtist.insertAdjacentHTML('beforeend', `<p>${artistArray[i]}</p>`)
-  }
-  for (i = 0; i < songLink.length; i++) {
-    displaySongInfo.insertAdjacentHTML('beforeend', `<p>${songLinkArray[i]}</p>`)
+  // for (i = 0; i < image.length; i++) {
+  //   displayImage.insertAdjacentHTML('beforeend', `<p>${imageArray[i]}</p>`)
+  // }
+  // for (i = 0; i < songName.length; i++) {
+  //   displaySong.insertAdjacentHTML('beforeend', `<p>${songNameArray[i]}</p>`)
+  // }
+  // for (i = 0; i < artist.length; i++) {
+  //   displayArtist.insertAdjacentHTML('beforeend', `<p>${artistArray[i]}</p>`)
+  // }
+  // for (i = 0; i < songLink.length; i++) {
+  //   displayLink.insertAdjacentHTML('beforeend', `<p>${songLinkArray[i]}</p>`)
+  //}
+  for (i = 0; i < songStorage.length; i++) {
+    displayImage.insertAdjacentHTML('beforeend',
+      `<img src="${songStorage[i].imageUrl}">`)
+
+    displaySong.insertAdjacentHTML('beforeend',
+      `<p>"${songStorage[i].songName}"</p>`)
+
+    displayArtist.insertAdjacentHTML('beforeend',
+      `<p>"${songStorage[i].artist}"</p>`)
+
+    displayLink.insertAdjacentHTML('beforeend',
+      `<a href="${songStorage[i].songLink}">${songStorage[i].songName}</a>`)
+    //HREF takes the name of the song for the name of the link
   }
 }
 
