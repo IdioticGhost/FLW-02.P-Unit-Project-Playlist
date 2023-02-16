@@ -10,6 +10,9 @@ let songLink = document.querySelector(".song-link");
 // button variable
 let add = document.querySelector(".add");
 
+// Misc
+let songCount = document.querySelector(".songCount")
+
 
 // task 6: declare variables for your display divs: the image url, song name, artist, and song link. Go back to the HTML to check that you are using the correct class names.
 
@@ -23,31 +26,28 @@ let displayLink = document.querySelector(".display-link");
 
 // task 7: create and populate an array to store your image urls. Create three more arrays. One to store your song names, one for the artists, and a last one for the song links.
 
-//let imageArray = ["https://i1.sndcdn.com/artworks-sRDJhbGDyvUA3em6-P4dUgg-t500x500.jpg", "https://i.ytimg.com/vi/h7MYJghRWt0/maxresdefault.jpg", "https://cdns-images.dzcdn.net/images/cover/089519d3ea4e86a9226036918cc19217/500x500.jpg", "https://i1.sndcdn.com/artworks-000053960610-1tgb5q-t500x500.jpg", "https://i1.sndcdn.com/artworks-000065016938-40k290-t500x500.jpg", "https://www.rush.com/wp-content/uploads/2014/12/clockwork-angels-cover-600x600.jpg"]
-//let songNameArray = ["Living in a Nightmare", "Die For You", "Satellite", "Coalescence", "I Will Show You", "The Garden"]
-//let artistArray = ["Blacklight District", "VALORANT", "STARSET", "Chris Christodoulou", "From Ashes to New", "RUSH"]
-//let songLinkArray = ["https://www.youtube.com/watch?v=sb7U1LceIMg", "https://www.youtube.com/watch?v=h7MYJghRWt0", "https://www.youtube.com/watch?v=fB4tJ_Ml9nw", "https://www.youtube.com/watch?v=ysPtBjY8o_A", "https://www.youtube.com/watch?v=n9_aRVZ2oco", "https://www.youtube.com/watch?v=uZodbmC6Mxc"]
-
 //REFACTOR ARRAYS DAY 
 // task 11: comment out the arrays data.
 // task 12: create an object for each of your songs.
 // task 13: inside each object, add key/value pairs to store the image url, song name, artist, and song link.
 
 let song1 = {
+
   imageUrl: "https://i1.sndcdn.com/artworks-sRDJhbGDyvUA3em6-P4dUgg-t500x500.jpg",
   songName: "Living in a Nightmare",
   artist: "Blacklight District",
   songLink: "https://www.youtube.com/watch?v=sb7U1LceIMg"
 }
 
-let song2 = {
-  imageUrl: "https://i.ytimg.com/vi/h7MYJghRWt0/maxresdefault.jpg",
+let song2 = {  imageUrl:"https://i.ytimg.com/vi/h7MYJghRWt0/maxresdefault.jpg",
   songName: "Die For You",
   artist: "VALORANT, Grabbitz",
   songLink: "https://www.youtube.com/watch?v=h7MYJghRWt0"
+  
 }
 
 let song3 = {
+
   imageUrl: "https://cdns-images.dzcdn.net/images/cover/089519d3ea4e86a9226036918cc19217/500x500.jpg",
   songName: "Satellite",
   artist: "STARSET",
@@ -135,19 +135,7 @@ function emptyDisplay() {
 function displaySongInfo() {
 
   // task 8: loop through your images array and display the images to your songs in the correct div. Create three more loops. One for the song names, one for the artists, and a last one for the song links.
-
-  // for (i = 0; i < image.length; i++) {
-  //   displayImage.insertAdjacentHTML('beforeend', `<p>${imageArray[i]}</p>`)
-  // }
-  // for (i = 0; i < songName.length; i++) {
-  //   displaySong.insertAdjacentHTML('beforeend', `<p>${songNameArray[i]}</p>`)
-  // }
-  // for (i = 0; i < artist.length; i++) {
-  //   displayArtist.insertAdjacentHTML('beforeend', `<p>${artistArray[i]}</p>`)
-  // }
-  // for (i = 0; i < songLink.length; i++) {
-  //   displayLink.insertAdjacentHTML('beforeend', `<p>${songLinkArray[i]}</p>`)
-  //}
+  
   for (i = 0; i < songStorage.length; i++) {
     displayImage.insertAdjacentHTML('beforeend',
       `<img src="${songStorage[i].imageUrl}">`)
@@ -166,12 +154,19 @@ function displaySongInfo() {
 
 
 
-
 // click event to add and display songs
 add.onclick = function() {
   addSongInfo();
+  emptyDisplay();
   displaySongInfo();
+
+  songCount.innerHTML = `You have ${songStorage.length} songs!`
 };
 
 // function call to display stored songs
 displaySongInfo();
+
+//Misc
+
+  // Display Song Count
+  songCount.innerHTML = `You have ${songStorage.length} songs!`
